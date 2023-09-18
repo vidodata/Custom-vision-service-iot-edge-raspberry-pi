@@ -30,7 +30,6 @@ class VideoStream(object):
         print("path: ", path)
         print("self.stream of cv2.VideoCapture(path) ", self.stream)
         print("Original frame size: " + str(int(self.stream.get(cv2.CAP_PROP_FRAME_WIDTH))) + "x" + str(int(self.stream.get(cv2.CAP_PROP_FRAME_HEIGHT))))
-        print("Frame rate (FPS): " + str(int(self.stream.get(cv2.CAP_PROP_FPS))))
         self.stopped = False
         self.Q = Queue(maxsize=queueSize)
 

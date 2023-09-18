@@ -52,7 +52,7 @@
               "RESIZE_WIDTH":  {"value": "256"},
               "RESIZE_HEIGHT":  {"value": "256"},
               "VERBOSE": {"value": "True"},
-              "SHOW_VIDEO":  {"value": "True"}
+              "SHOW_VIDEO":  {"value": "False"}
             },
             "settings": {
               "image": "${MODULES.CameraCapture.arm32v7}",

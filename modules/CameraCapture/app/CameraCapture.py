@@ -180,7 +180,9 @@ class CameraCapture(object):
 
             #Pre-process locally
             if self.nbOfPreprocessingSteps == 1 and self.convertToGray:
+                
                 preprocessedFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                print("preprocessedFrame: ", preprocessedFrame)
             
             if self.nbOfPreprocessingSteps == 1 and (self.resizeWidth != 0 or self.resizeHeight != 0):
                 preprocessedFrame = cv2.resize(frame, (self.resizeWidth, self.resizeHeight))
