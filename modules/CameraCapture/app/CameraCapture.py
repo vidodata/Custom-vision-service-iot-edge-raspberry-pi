@@ -86,6 +86,7 @@ class CameraCapture(object):
             print("   - Resize height: " + str(self.resizeHeight))
             print("   - Annotate: " + str(self.annotate))
             print("   - Send processing results to hub: " + str(self.sendToHubCallback is not None))
+            print("nieuwste test1")
             print()
         
         self.displayFrame = None
@@ -135,6 +136,7 @@ class CameraCapture(object):
 
     def start(self):
         frameCounter = 0
+        print("Als hij een frame heeft gemaakt in de videostream met videocapture dan telt hij de frames: ",frameCounter)
         perfForOneFrameInMs = None
         while True:
             if self.showVideo or self.verbose:
@@ -145,6 +147,7 @@ class CameraCapture(object):
             frameCounter +=1
             if self.isWebcam:
                 frame = self.vs.read()
+                print("frame: ", frame)
             else:
                 frame = self.capture.read()[1]
                 if frameCounter == 1:

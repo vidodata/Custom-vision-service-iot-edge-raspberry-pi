@@ -1,0 +1,13 @@
+{
+  "DomainType": "ObjectDetection",
+  "Platform": "DockerFile",
+  "Flavor": "ARM",
+  "ExporterVersion": "2.1",
+  "ExportedDate": "2023-09-05T11:10:00.4834429Z",
+  "IterationId": "b3a5e775-33fa-45d2-bb37-105b7c1df572",
+  "ModelFileName": "model.pb",
+  "LabelFileName": "labels.txt",
+  "MetadataPropsFileName": "metadata_properties.json",
+  "ModelFileSHA1": "552807811ee21984708e919dbb7e45d7bf700212",
+  "SchemaVersion": "1.0"
+}

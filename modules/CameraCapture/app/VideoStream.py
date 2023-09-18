@@ -1,5 +1,6 @@
 # To make python 2 and python 3 compatible code
 from __future__ import absolute_import
+import os
 
 from threading import Thread
 import sys
@@ -26,12 +27,16 @@ else:
 class VideoStream(object):
     def __init__(self, path, queueSize=3):
         self.stream = cv2.VideoCapture(path)
+        print("path: ", path)
+        print("self.stream of cv2.VideoCapture(path) ", self.stream)
+
         self.stopped = False
         self.Q = Queue(maxsize=queueSize)
 
     def start(self):
         # start a thread to read frames from the video stream
         t = Thread(target=self.update, args=())
+        print("thread ",t)
         t.daemon = True
         t.start()
         return self
@@ -60,6 +65,7 @@ class VideoStream(object):
             print("got error: "+str(e))
 
     def read(self):
+        print("self in read functie: ", self.Q.get())
         return self.Q.get()
 
     def more(self):
@@ -70,3 +76,6 @@ class VideoStream(object):
 
     def __exit__(self, exception_type, exception_value, traceback):
         self.stream.release()
+
+
+IMAGE_PROCESSING_ENDPOINT = os.getenv('IMAGE_PROCESSING_ENDPOINT', "")

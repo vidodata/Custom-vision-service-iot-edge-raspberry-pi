@@ -1,5 +1,6 @@
 # To make python 2 and python 3 compatible code
 from __future__ import absolute_import
+import os
 
 # Returns rectangle boundaries in the CV2 format (topLeftX, topLeftY, bottomRightX, bottomRightY) given by a processing service
 
@@ -69,3 +70,6 @@ class AnnotationParser:
         except:
             # Ignoring exceptions for now so that video can be read and analyzed without post-processing in case of errors
             pass
+
+
+IMAGE_PROCESSING_PARAMS = os.getenv('IMAGE_PROCESSING_PARAMS', "")

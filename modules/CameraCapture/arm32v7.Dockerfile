@@ -17,7 +17,7 @@ RUN install_packages \
     zlib1g-dev \
     libatlas-base-dev \
     wget \
-    libboost-python1.62.0 \
+    libboost-python1.71.0 \
     curl \
     libcurl4-openssl-dev \
     libldap2-dev \
@@ -35,7 +35,7 @@ RUN install_packages \
     # for video files
     libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
     # for gui
-    libqt4-test libqtgui4 libqtwebkit4 libgtk2.0-dev \
+    libqt5test5 libqt5gui5 libqt5webkit5 libgtk2.0-dev \
     # high def image processing
     libilmbase-dev libopenexr-dev
 
@@ -53,6 +53,8 @@ RUN rm -rf /var/lib/apt/lists/* \
 RUN [ "cross-build-end" ]  
 
 ADD /app/ .
+ADD ./test/ .
+
 
 # Expose the port
 EXPOSE 5012

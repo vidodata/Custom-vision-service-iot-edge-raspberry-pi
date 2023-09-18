@@ -18,6 +18,8 @@ from azure.iot.device import IoTHubModuleClient, Message
 
 import CameraCapture
 from CameraCapture import CameraCapture
+from modules.CameraCapture.app.AnnotationParser import IMAGE_PROCESSING_PARAMS
+from modules.CameraCapture.app.VideoStream import IMAGE_PROCESSING_ENDPOINT
 
 
 # global counters
@@ -109,8 +111,6 @@ def __convertStringToBool(env):
 if __name__ == '__main__':
     try:
         VIDEO_PATH = os.environ['VIDEO_PATH']
-        IMAGE_PROCESSING_ENDPOINT = os.getenv('IMAGE_PROCESSING_ENDPOINT', "")
-        IMAGE_PROCESSING_PARAMS = os.getenv('IMAGE_PROCESSING_PARAMS', "")
         SHOW_VIDEO = __convertStringToBool(os.getenv('SHOW_VIDEO', 'False'))
         VERBOSE = __convertStringToBool(os.getenv('VERBOSE', 'False'))
         LOOP_VIDEO = __convertStringToBool(os.getenv('LOOP_VIDEO', 'True'))

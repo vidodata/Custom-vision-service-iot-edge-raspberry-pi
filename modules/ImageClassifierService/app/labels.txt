@@ -1,2 +1,6 @@
-Apple
-Banana
+couch
+hurkend
+laying
+sitting
+standing
+table
