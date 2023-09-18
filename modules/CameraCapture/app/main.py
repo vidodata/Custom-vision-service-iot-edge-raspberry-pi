@@ -18,8 +18,8 @@ from azure.iot.device import IoTHubModuleClient, Message
 
 import CameraCapture
 from CameraCapture import CameraCapture
-from modules.CameraCapture.app.AnnotationParser import IMAGE_PROCESSING_PARAMS
-from modules.CameraCapture.app.VideoStream import IMAGE_PROCESSING_ENDPOINT
+from AnnotationParser import IMAGE_PROCESSING_PARAMS
+from VideoStream import IMAGE_PROCESSING_ENDPOINT
 
 
 # global counters

@@ -26,10 +26,11 @@ else:
 
 class VideoStream(object):
     def __init__(self, path, queueSize=3):
-        self.stream = cv2.VideoCapture(path)
+        self.stream = cv2.VideoCapture(path, cv2.CAP_V4L)
         print("path: ", path)
         print("self.stream of cv2.VideoCapture(path) ", self.stream)
-
+        print("Original frame size: " + str(int(self.stream.get(cv2.CAP_PROP_FRAME_WIDTH))) + "x" + str(int(self.stream.get(cv2.CAP_PROP_FRAME_HEIGHT))))
+        print("Frame rate (FPS): " + str(int(self.stream.get(cv2.CAP_PROP_FPS))))
         self.stopped = False
         self.Q = Queue(maxsize=queueSize)
 
@@ -65,6 +66,7 @@ class VideoStream(object):
             print("got error: "+str(e))
 
     def read(self):
+        print("kom je in de readfunctie print dan dit")
         print("self in read functie: ", self.Q.get())
         return self.Q.get()
 

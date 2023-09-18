@@ -47,7 +47,7 @@ class CameraCapture(object):
             annotate = False,
             sendToHubCallback = None):
         self.videoPath = videoPath
-        if self.__IsInt(videoPath):
+        if self.__IsInt("0"):
             #case of a usb camera (usually mounted at /dev/video* where * is an int)
             self.isWebcam = True
         else:
@@ -123,7 +123,8 @@ class CameraCapture(object):
     def __enter__(self):
         if self.isWebcam:
             #The VideoStream class always gives us the latest frame from the webcam. It uses another thread to read the frames.
-            self.vs = VideoStream(int(self.videoPath)).start()
+            self.vs = VideoStream(int("0")).start()
+            print("self.vs: ",self.vs)
             time.sleep(1.0)#needed to load at least one frame into the VideoStream class
             #self.capture = cv2.VideoCapture(int(self.videoPath))
         else:
@@ -137,6 +138,7 @@ class CameraCapture(object):
     def start(self):
         frameCounter = 0
         print("Als hij een frame heeft gemaakt in de videostream met videocapture dan telt hij de frames: ",frameCounter)
+
         perfForOneFrameInMs = None
         while True:
             if self.showVideo or self.verbose:
@@ -145,9 +147,12 @@ class CameraCapture(object):
                 startCapture = time.time()
 
             frameCounter +=1
+            print("Wordt dit nu 1? Framecounter: ", frameCounter)
             if self.isWebcam:
+                print("test if webcam is true print dit")
                 frame = self.vs.read()
-                print("frame: ", frame)
+                print("kom je uit de readfunctie print dan dit")
+                print("frame if self.iswebcam is true: ",frame)
             else:
                 frame = self.capture.read()[1]
                 if frameCounter == 1:

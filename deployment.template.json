@@ -47,7 +47,7 @@
             "status": "running",
             "restartPolicy": "always",
             "env": {
-              "VIDEO_PATH": {"value": "0"},
+              "VIDEO_PATH": {"value": "/dev/video0"},
               "IMAGE_PROCESSING_ENDPOINT":  {"value": "http://image-classifier-service:80/image"},
               "RESIZE_WIDTH":  {"value": "256"},
               "RESIZE_HEIGHT":  {"value": "256"},
@@ -55,7 +55,23 @@
               "SHOW_VIDEO":  {"value": "True"}
             },
             "settings": {
-              "image": "${MODULES.CameraCapture.arm32v7}" }
+              "image": "${MODULES.CameraCapture.arm32v7}",
+              "createOptions": {
+                "HostConfig": {
+                  "PortBindings": {
+                    "5012/tcp": [ { "HostPort": "5012"} ]
+                  },
+                  "Binds": [ "/dev/video0:/dev/video0" ],
+                  "Devices": [
+                    {
+                      "PathOnHost": "/dev/video0",
+                      "PathInContainer": "/dev/video0",
+                      "CgroupPermissions": "mrw"
+                    }
+                  ]
+                }
+              }
+            }
           },
           "image-classifier-service": {
             "version": "1.0",
